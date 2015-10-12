@@ -1,0 +1,40 @@
+{
+    "provider_s": "Cyber Threat Intelligence Group",
+    "schema_version_s": "2.2.0",
+    "source_description_s": "",
+    "source_observable_s": "CTIG",
+    "tlp_i": 2,
+    "data_source_description_s": "Untitled4 Jul212015",
+    "data_source_s": "http://pastebin.com/wdsbKddsYu",
+    "distribution_time_t": 1437491489,
+    "last_updated_t": 1437491489,
+    "list_name_s": "Data Exfiltration",
+    "observable_dictionary_c_array": [
+    {
+        "observable_id_s": "Data Leak Announcement",
+        "classification_c_array": [
+            { "classification_family_s": "Observed Actions", "classification_id_s": "Credential Theft", "score_i": 60 },
+            { "classification_family_s": "Observed Actions", "classification_id_s": "Information Loss", "score_i": 15 },
+            { "classification_family_s": "Observed Actions", "classification_id_s": "Public", "score_i": 5 }
+        ],
+        "criticality_i": 30,
+        "description_s": "Potentially sensitive company information has been discovered in an unauthorized location. It was collected through independent means of scanning multiple public third-party sites and data dumps."
+    }
+    ],
+    "element_observable_c_array": [
+        {
+            "subject_fqdn_s": "twitter.com",
+            "threat_observable_c_map": {
+                "Data Leak Announcement": {
+                   "occurred_at_t": 4355545,
+                   "smtp_c_array" : [
+                        { "email_s": "joelleey", "last_seen_t": 1437480000, "occurred_at_t": 1437480000, "password_s": "jan15025" },
+                        { "email_s": "chnesee", "last_seen_t": 1437480000, "occurred_at_t": 1437480000, "password_s": "willmit2212" },
+                        { "email_s": "dedelopeismed", "last_seen_t": 1437480000, "occurred_at_t": 1437480000, "password_s": "ismedsofyan14" },
+                        { "email_s": "ibnu_fahrezy", "last_seen_t": 1437480000, "occurred_at_t": 1437480000, "password_s": "ilove03" }
+                    ]
+                 }
+            }
+        }
+    ]
+ }

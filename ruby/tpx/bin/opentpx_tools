@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+unless RUBY_VERSION =~ /^2.1/
+  print "This script targets Ruby version 2.1. It appears you have a different Ruby version installed.  Would you like to execute anyway? [Y/n]: "
+  answer = STDIN.gets.strip
+  answer = 'y' if answer == ''
+  exit unless answer =~ /y/i
+end
+
+$:<< File.join(__dir__, '..', 'lib')
+
+require 'tpx'
+require 'tpx/tools'
+
+exit TPX::Tools.run(ARGV)

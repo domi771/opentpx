@@ -1,0 +1,141 @@
+{
+  "schema_version_s":"2.1.5",
+  "provider_s":"malwaredomainlist.com",
+  "list_name_s":"Mdl Updates Csv",
+  "source_observable_s":"MdlUpdatesCsv",
+  "source_description_s":"Mdl Updates Csv. Malware Domain List is a non-commercial community project.",
+  "distribution_time_t":1427889602,
+  "last_updated_t":1427889602,
+  "observable_dictionary_c_array":[
+    {
+      "observable_id_s":"Malicious Host",
+      "description_s":"This network node is a malicious host.",
+      "criticality_i":20,
+      "classification_c_array":[
+        {
+          "classification_id_s":"Malicious Host",
+          "score_i":20
+        }
+      ]
+    }
+  ],
+  "element_observable_c_array":[
+    {
+      "subject_ipv4_s":"202.116.65.35",
+      "threat_observable_c_map":{
+        "Malicious Host":{
+          "occurred_at_t":1435594800,
+          "url_s":"lifescience.sysu.edu.cn/filees/guuu16pesche.asp",
+          "server_s":"lifescience.sysu.edu.cn.",
+          "threat_type_s":"Leads to exploit",
+          "contact_s":"-",
+          "asn_s":"4538"
+        }
+      }
+    },
+    {
+      "subject_ipv4_s":"209.133.200.226",
+      "threat_observable_c_map":{
+        "Malicious Host":{
+          "occurred_at_t":1433756880,
+          "url_s":"librationgacrux.alishazyrowski.com/sauerkraut-snaky-aver-flushed/749407903199209269",
+          "server_s":"209-133-200-226.static.hvvc.us.",
+          "threat_type_s":"exploit kit",
+          "contact_s":"-",
+          "asn_s":"29802"
+        }
+      }
+    },
+    {
+      "subject_ipv4_s":"85.143.217.116",
+      "threat_observable_c_map":{
+        "Malicious Host":{
+          "occurred_at_t":1433756880,
+          "url_s":"youngsters.mesomoor.com/produced/features.js",
+          "server_s":"85-143-217-116.simplecloud.ru.",
+          "threat_type_s":"leads to exploit kit",
+          "contact_s":"-",
+          "asn_s":"201848"
+        }
+      }
+    },
+    {
+      "subject_ipv4_s":"94.75.240.108",
+      "threat_observable_c_map":{
+        "Malicious Host":{
+          "occurred_at_t":1433640060,
+          "url_s":"teamtalker.net/download.php",
+          "server_s":"-",
+          "threat_type_s":"Trojan.Backdoor",
+          "contact_s":"Registrar Abuse Contact abuse@reg.ru",
+          "asn_s":"60781"
+        }
+      }
+    },
+    {
+      "subject_ipv4_s":"184.168.221.27",
+      "threat_observable_c_map":{
+        "Malicious Host":{
+          "occurred_at_t":1433401980,
+          "url_s":"microsoft.com32.info",
+          "server_s":"ip-184-168-221-27.ip.secureserver.net.",
+          "threat_type_s":"Browlock, Fake.TechSupport",
+          "contact_s":"COM32.INFO@domainsbyproxy.com",
+          "asn_s":"26496"
+        }
+      }
+    },
+    {
+      "subject_ipv4_s":"50.63.202.13",
+      "threat_observable_c_map":{
+        "Malicious Host":{
+          "occurred_at_t":1433401980,
+          "url_s":"avg.com32.info",
+          "server_s":"ip-50-63-202-13.ip.secureserver.net.",
+          "threat_type_s":"Browlock, Fake.TechSupport",
+          "contact_s":"COM32.INFO@domainsbyproxy.com",
+          "asn_s":"26496"
+        }
+      }
+    },
+    {
+      "subject_ipv4_s":"50.63.202.22",
+      "threat_observable_c_map":{
+        "Malicious Host":{
+          "occurred_at_t":1433401980,
+          "url_s":"kaspersky.com32.info",
+          "server_s":"ip-50-63-202-22.ip.secureserver.net.",
+          "threat_type_s":"Browlock, Fake.TechSupport",
+          "contact_s":"COM32.INFO@domainsbyproxy.com",
+          "asn_s":"26496"
+        }
+      }
+    },
+    {
+      "subject_ipv4_s":"104.238.102.226",
+      "threat_observable_c_map":{
+        "Malicious Host":{
+          "occurred_at_t":1433397360,
+          "url_s":"windows-crash-report.info",
+          "server_s":"ip-104-238-102-226.ip.secureserver.net.",
+          "threat_type_s":"Browlock, Fake.TechSupport",
+          "contact_s":"WINDOWS-CRASH-REPORT.INFO@domainsbyproxy.com",
+          "asn_s":"26496"
+        }
+      }
+    },
+    {
+      "subject_ipv4_s":"94.242.198.221",
+      "threat_observable_c_map":{
+        "Malicious Host":{
+          "occurred_at_t":1433316420,
+          "url_s":"pllysvaatteiden.rvexecutives.com/bluntly_encirclement_airconditioner_suitcases/729479749193312073",
+          "server_s":"ip-static-94-242-198-221.server.lu.",
+          "threat_type_s":"exploit kit",
+          "contact_s":"-",
+          "asn_s":"5577"
+        }
+      }
+    }
+  ]
+}

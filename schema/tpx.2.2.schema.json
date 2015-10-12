@@ -1,0 +1,632 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "OpenTPX",
+  "description": "An Open Threat Partner eXchange (OpenTPX) file",
+
+  "definitions": {
+
+    "suffixed_schema": {
+      "type": "object",
+      "patternProperties": {
+        "_ipv4_i$": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+        "_ipv4_ui$": { "type": "integer", "minimum": 0, "maximum": 4294967295 },
+        "_ipv4_s$": { "type": "string", "format": "ipv4" },
+        "_cidrv4_s$": { "type": "string" },
+        "_ipv6_ll$": { "type": "integer", "minimum": 0 },
+        "_ipv6_s$": { "type": "string", "format": "ipv6" },
+        "_cidrv6_s$": { "type": "string" },
+        "_fqdn_s$": { "type": "string" },
+        "_asn_number_ui$": { "type": "integer", "minimum": 0 },
+        "_asn_s$": { "type": "string" },
+        "_md5_h$": { "type": "string", "pattern": "^[A-Fa-f0-9]{32}$" },
+        "_sha1_h$": { "type": "string", "pattern": "^[A-Fa-f0-9]{40}$" },
+        "_sha256_h$": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+        "_sha512_h$": { "type": "string", "pattern": "^[A-Fa-f0-9]{128}$" },
+        "_t$": { "type": "integer", "minimum": 0 },
+        "_s$": { "type": "string" },
+        "_i$": { "type": "integer" },
+        "_ui$": { "type": "integer" },
+        "_ll$": { "type": "integer" },
+        "_h$": { "type": "string", "pattern": "^[A-Fa-f0-9]+$" },
+        "_f$": { "type": "number" },
+        "_c_array$": { "type": "array", "minItems": 1, "items": { "type": "object" } },
+        "_c_map$": { "type": "object" },
+        "_s_array$": { "type": "array", "minItems": 1, "items": { "type": "string"} }
+      },
+      "additionalProperties": false
+    },
+
+    "observable": {
+      "allOf": [{
+        "type": "object",
+        "properties": {
+          "observable_id_s": {
+            "description": "The name of the observable",
+            "type": "string"
+          },
+          "criticality_i": {
+            "description": "The threat observable’s relative criticality between 1 and 100",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "score_i": {
+            "description": "Optional overridden threat score between 1 and 100.",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "score_24hr_decay_i": {
+            "description": "Optional parameter that defines the percentage of the score decays over time if no new observation. A valid decay is between 0 and 100. A value of 0 switches off decay due to time.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "score_calc_setting_s":{
+            "description": "Optional parameter that defines whether the score was calculated based on a manual or automatic calculation. Default: auto",
+            "type": "string",
+            "pattern": "^(auto|manual)$"
+          },
+          "description_s": {
+            "description": "A user displayable description of the observable",
+            "type": "string"
+          },
+          "classification_c_array": {
+            "description": "An array of classification of this threat observable.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "allOf": [{
+                "type": "object",
+                "properties": {
+                  "classification_id_s": {
+                    "description": "The name of the classification",
+                    "type": "string"
+                  },
+                  "classification_family_s": {
+                    "description": "The descriptive family name for this classification",
+                    "type": "string"
+                  },
+                  "score_i": {
+                    "description": "The criticality/score of the classification between 1 and 100 where a higher number is a higher risk classification",
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100
+                  }
+                },
+                "additionalProperties": false,
+                "required": ["classification_id_s"]
+              },
+              {
+                "$ref": "#/definitions/suffixed_schema"
+              }]
+            }
+          },
+          "attribute_c_map": {
+            "description": "An map of attributes associated with the observable that are common across all subjects",
+            "$ref": "#/definitions/suffixed_schema"
+          },
+          "summary_s": {
+            "description": "A user displayable summary of the observable description",
+            "type": "string"
+          },
+          "notes_s": {
+            "description": "A user defined set of notes that provide background to the description",
+            "type": "string"
+          },
+          "reference_s_array": {
+            "description": "An array of string URL references to background information on the observable",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "required": ["observable_id_s", "description_s", "classification_c_array"]
+      },
+      {
+        "$ref": "#/definitions/suffixed_schema"
+      }]
+    },
+
+    "network": {
+      "type": "object",
+      "properties": {
+        "asn_i": {
+          "description": "The ID number of the ASN",
+          "type": "integer"
+        },
+        "as_owner_s": {
+          "description": "The owner of the ASN",
+          "type": "string"
+        },
+        "asn_routers_ip_array": {
+          "description": "The array of routers that make up this ASN",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": ".*"
+          }
+        },
+        "asn_router_conns_ip_array": {
+          "description": "The array of router interconnections in this ASN",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": ".*"
+          }
+        },
+        "asn_cidr_announcements_c_array": {
+          "description": "The array of CIDR announcements in this ASN",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/suffixed_schema"
+          }
+        },
+        "asn_downstream_i_array": {
+          "description": "The array of downstream ASNs from this ASN",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "asn_upstream_i_array": {
+          "description": "The array of upstream ASNs from this ASN",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "asn_community_c_array": {
+          "description": "The array of communities within this ASN",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/suffixed_schema"
+          }
+        }
+      }
+    },
+
+    "collection": {
+      "type": "object",
+      "properties": {
+        "name_id_s": {
+          "description": "The name of the collection",
+          "type": "string"
+        },
+        "last_updated_t": {
+          "description": "The UTC Epoch time of the last update to this collection",
+          "type": "integer",
+          "minimum": 0
+        },
+        "author_s": {
+          "description": "A name associated with the last team, group, company or person making the change",
+          "type": "string"
+        },
+        "workspace_s": {
+          "description": "A collaboration space this collection is associated with",
+          "type": "string"
+        },
+        "fqdn_ref_c_array": {
+          "description": "An array of FQDN elements referenced by this collection",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/suffixed_schema"
+          }
+        },
+        "ip_ref_c_array": {
+          "description": "An array of IP (v4 and v6) elements referenced by this collection",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/suffixed_schema"
+          }
+        },
+        "asn_ref_c_array": {
+          "description": "An array of ASN elements referenced by this collection",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/suffixed_schema"
+          }
+        },
+        "cidr_ref_c_array": {
+          "description": "An array of CIDR elements referenced by this collection",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/suffixed_schema"
+          }
+        },
+        "observable_ref_c_array": {
+          "description": "An array of observables referenced by this collection",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/suffixed_schema"
+          }
+        },
+        "collection_c_array": {
+          "description": "An array of children collections contained within this collection",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/collection"
+          }
+        }
+      },
+      "required": ["name_id_s"]
+    },
+
+    "element_observable": {
+      "allOf": [{
+        "type": "object",
+        "properties": {
+          "score_i": {
+            "description": "The element’s overridden score if not derived from scoring of the observables",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "score_24hr_decay_i": {
+            "description": "The element’s overridden score decay if not derived from the observable’s decay parameter. 0 indicates this particular element’s score will not change due to time decay alone.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "threat_observable_c_map": {
+            "description": "A map of Threat Observables that are associated with the subject.  The threat observable must already be defined in the observable dictionary to be referenced by this map.",
+            "type": "object",
+            "patternProperties": {
+              ".+": {
+                "allOf": [{
+                  "type": "object",
+                  "properties": {
+                    "occurred_at_t": {
+                      "description": "The Epoch UTC timestamp when this particular threat observable was first observed associated with the subject",
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "last_seen_t": {
+                      "description": "The Epoch UTC timestamp of the last update when this threat observable was observed associated with the subject",
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "country_code_s": {
+                      "description": "The 2 or 3 digit country code associated with the threat observable",
+                      "type": "string",
+                      "minLength": 2,
+                      "maxLength": 3
+                    },
+                    "destination_fqdn_s": {
+                      "description": "The domain that a particular botnet or peer to peer communication threat was destined to",
+                      "type": "string"
+                    },
+                    "description_s": {
+                      "description": "The description of the observable or element or collection",
+                      "type": "string"
+                    },
+                    "url_s": {
+                      "description": "The description of the observable or element or collection",
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "score_i": {
+                      "description": "The criticality/score of the classification between 1 and 100 where a higher number is a higher risk observable",
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100
+                    },
+                    "classification_s": {
+                      "description": "The name of the classification",
+                      "type": "string"
+                    },
+                    "filesize_i": {
+                      "description": "The size of a file used to convey some behavior",
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "magic_s": {
+                      "description": "The description of the file",
+                      "type": "string"
+                    },
+                    "mime_type_s": {
+                      "description": "The mime type of the file",
+                      "type": "string"
+                    },
+                    "hash_md5_h": {
+                      "description": "The MD5 hash of a file",
+                      "type": "string"
+                    },
+                    "hash_sha1_h": {
+                      "description": "The SHA1 hash of a file",
+                      "type": "string"
+                    },
+                    "hash_sha256_h": {
+                      "description": "The SHA256 hash of a file",
+                      "type": "string"
+                    },
+                    "hash _sha512_h": {
+                      "description": "The SHA512 hash of a file",
+                      "type": "string"
+                    },
+                    "dns_request_c_array": {
+                      "description": "The list of DNS requests made",
+                      "type": "array",
+                      "items": { "$ref": "#/definitions/suffixed_schema" }
+                    },
+                    "dns_response_c_array": {
+                      "description": "The list of DNS responses where each response is { Dns-record-type : Dns-value}",
+                      "type": "array",
+                      "items": { "$ref": "#/definitions/suffixed_schema" }
+                    },
+                    "host_c_array": {
+                      "description": "The list of hosts in the PCAP",
+                      "type": "array",
+                      "items": { "$ref": "#/definitions/suffixed_schema" }
+                    },
+                    "http_c_array": {
+                      "description": "The list of HTTP key/value pairs in the PCAP",
+                      "type": "array",
+                      "items": { "$ref": "#/definitions/suffixed_schema" }
+                    },
+                    "smtp_c_array": {
+                      "description": "The list of SMTP key/value pairs in the PCAP",
+                      "type": "array",
+                      "items": { "$ref": "#/definitions/suffixed_schema" }
+                    },
+                    "tcp_c_array": {
+                      "description": "The list of TCP key/value pairs in the PCAP",
+                      "type": "array",
+                      "items": { "$ref": "#/definitions/suffixed_schema" }
+                    },
+                    "fqdn_c_array": {
+                      "description": "The list of SMTP key/value pairs in the PCAP",
+                      "type": "array",
+                      "items": { "$ref": "#/definitions/suffixed_schema" }
+                    },
+                    "ssl_c_array": {
+                      "description": "The list of SSL key/value pairs in the PCAP",
+                      "type": "array",
+                      "items": { "$ref": "#/definitions/suffixed_schema" }
+                    },
+                    "geoloc_lat_f": {
+                      "description": "The latitude of the observable if known",
+                      "type": "number"
+                    },
+                    "geoloc_long_f": {
+                      "description": "The longitude of the observable if known",
+                      "type": "number"
+                    },
+                    "dest_port_i": {
+                      "description": "A destination protocol port",
+                      "type": "integer"
+                    },
+                    "dest_ipv4_s": {
+                      "description": "A destination IP v4 address as a string",
+                      "type": "string"
+                    },
+                    "dest_ipv4_i": {
+                      "description": "A destination IP v4 address as an integer",
+                      "type": "integer"
+                    },
+                    "src_port_i": {
+                      "description": "A source protocol port",
+                      "type": "integer"
+                    },
+                    "src_ipv4_s": {
+                      "description": "A source IP v4 address as a string",
+                      "type": "string"
+                    },
+                    "src_ipv4_i": {
+                      "description": "A source IP v4 address as an integer",
+                      "type": "integer"
+                    },
+                    "size_i": {
+                      "description": "A size in bytes of a communication or entity",
+                      "type": "integer"
+                    },
+                    "tlp_i": {
+                      "description": "The Traffic Light Protocol value. 0 – White, 1 – Green, 2 – Amber, 3 – Red",
+                      "type": "integer"
+                    },
+                    "name_id_s": {
+                      "description": "The name of the country provided as part of a country code file",
+                      "type": "string"
+                    },
+                    "country_code_i": {
+                      "description": "The country identifier as part of the country code file",
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "iso_3_s": {
+                      "description": "The ISO 3 letter code for the country",
+                      "type": "string",
+                      "minLength": 3,
+                      "maxLength": 3
+                    },
+                    "iso_2_s": {
+                      "description": "The ISO 2 letter code for the country",
+                      "type": "string",
+                      "minLength": 2,
+                      "maxLength": 2
+                    },
+                    "region_code_i": {
+                      "description": "The regional code for the country code file",
+                      "type": "integer"
+                    },
+                    "continent_code_i": {
+                      "description": "The continent code for the country code file",
+                      "type": "integer"
+                    },
+                    "continent_code_s": {
+                      "description": "The continent name for the country code file",
+                      "type": "string"
+                    },
+                    "naics_code_i": {
+                      "description": "The NAICS code",
+                      "type": "integer"
+                    },
+                    "naics_code_s": {
+                      "description": "The NAICS code as a string",
+                      "type": "string"
+                    }
+                  },
+                  "required": ["occurred_at_t"]
+                },
+                { "$ref": "#/definitions/suffixed_schema" }
+                ]
+              }
+            }
+          }
+        },
+        "required": ["threat_observable_c_map"]
+      },
+      { "$ref": "#/definitions/suffixed_schema" },
+      {
+        "oneOf": [
+          { "required": ["subject_ipv4_i"] },
+          { "required": ["subject_ipv4_ui"] },
+          { "required": ["subject_ipv4_s"] },
+          { "required": ["subject_ipv6_ui"] },
+          { "required": ["subject_ipv6_s"] },
+          { "required": ["subject_fqdn_s"] },
+          { "required": ["subject_cidrv4_s"] },
+          { "required": ["subject_cidrv6_s"] },
+          { "required": ["subject_asn_s"] },
+          { "required": ["subject_asn_ui"] },
+          { "required": ["subject_md5_h"] },
+          { "required": ["subject_sha1_h"] },
+          { "required": ["subject_sha256_h"] },
+          { "required": ["subject_sha512_h"] },
+          { "required": ["subject_registrykey_s"] },
+          { "required": ["subject_filename_s"] },
+          { "required": ["subject_filepath_s"] },
+          { "required": ["subject_mutex_s"] },
+          { "required": ["subject_actor_s"] },
+          { "required": ["subject_email_s"] }
+        ]
+      }
+      ]
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "schema_version_s": {
+      "description": "The provider’s version of their schema",
+      "type": "string"
+    },
+    "provider_s": {
+      "description": "The provider’s company name",
+      "type": "string"
+    },
+    "source_observable_s": {
+      "description": "The prefix associated with this threat list",
+      "type": "string"
+    },
+    "source_description_s": {
+      "description": "A description of the source feed that provides background to the type of data, the types of information available to the user",
+      "type": "string"
+    },
+    "source_file_s": {
+      "description": "The file containing the original feed information",
+      "type": "string",
+      "format": "uri"
+    },
+    "score_i": {
+      "description": "The score of the source feed accuracy. As assessment of the source feed’s accuracy between 1 and 100 where 100 is completely accurate",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100
+    },
+    "last_updated_t": {
+      "description": "The Epoch UTC timestamp this file was last changed by the provider",
+      "type": "integer",
+      "minimum": 0
+    },
+    "distribution_time_t": {
+      "description": "The Epoch UTC timestamp this file was distributed by the provider",
+      "type": "integer",
+      "minimum": 0
+    },
+    "list_name_s": {
+      "description": "The threat feed list name",
+      "type": "string"
+    },
+    "observable_dictionary_c_array": {
+      "description": "An array of observable definitions",
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "$ref": "#/definitions/observable"
+      }
+    },
+    "element_observable_c_array": {
+      "description": "An array of Element Threat Observables",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/element_observable"
+      }
+    },
+    "collection_c_array": {
+      "description": "An array of Collections",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/collection"
+      }
+    },
+    "asn_c_array": {
+      "description": "An array of ASN network information",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/network"
+      }
+    },
+    "dictionary_file_manifest": {
+      "description": "An array of filenames (fully qualified path) where the dictionary files are",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "observable_element_file_manifest": {
+      "description": "An array of filenames (fully qualified path) where the element observable files are",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "collection_file_manifest": {
+      "description": "An array of filenames (fully qualified path) where the collection files are",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "network_file_manifest": {
+      "description": "An array of filenames (fully qualified path) where the network files are",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["schema_version_s", "provider_s", "source_observable_s", "last_updated_t", "list_name_s"]
+}

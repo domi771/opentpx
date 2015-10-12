@@ -1,0 +1,113 @@
+{
+  "schema_version_s": "2.2.0",
+  "provider_s": "Pcap Intel Provider Company",
+  "list_name_s": "Pcap Provider Company List Data",
+  "source_observable_s": "PCAP_IND_NAME",
+  "source_file_s": "/var/lg/data/json/list_name/2014/06/01/2014.pcap",
+  "source_description_s": "This feed provides information on PCAP behavior captured by X",
+  "distribution_time_t": 1221312312,
+  "last_updated_t": 121232134,
+  "score_i": 90,
+
+  "observable_dictionary_c_array": [
+    {
+      "observable_id_s" : "5013a954e6793d3610df43e761fd2deacdd3cd81dbc0ef902c5756bca61b5a94",
+      "criticality_i": 90,
+      "summary_s": "This is a summary of the observable",
+      "description_s": "This is the observable associated with Detonation_Hash 5013a954e6793d3610df43e761fd2deacdd3cd81dbc0ef902c5756bca61b5a94",
+      "notes_s": "User defined notes",
+      "reference_s_array": [
+          "http://www.thisisareference.com/observablereference", "http://www.anotherreference.com/2ndrefererence"
+      ],
+      "classification_c_array" : [
+        {
+          "classification_id_s": "Espionage",
+          "score_i": 90
+        }
+      ],
+      "attribute_c_map" : {
+        "analysis_last_updated_t": 1421700366,
+        "hash_md5_h": "12345678901234567890123456789012",
+        "priority_i": 0,
+        "submission_last_updated_t": 1421700366,
+        "tlp_i": 1
+      }
+    },
+    {
+      "observable_id_s" : "PCAP_BASIC_FILEINFO_10000",
+      "criticality_i": 90,
+      "summary_s": "This is a summary of the observable",
+      "description_s": "This is the observable associated with the PCAP file information. The observable name should be a unique file",
+      "notes_s": "User defined notes",
+      "reference_s_array": [
+          "http://www.thisisareference.com/observablereference", "http://www.anotherreference.com/2ndrefererence"
+      ],
+      "classification_c_array" : [
+        {
+          "classification_id_s": "Espionage",
+          "score_i": 90
+        }
+      ],
+      "attribute_c_map" : {
+          "filesize_i": 4355545,
+          "magic_s": "tcpdump capture file (little-endian) - version 2.4 (Ethernet, capture length 65535)",
+          "country_code_s": "IR",  
+          "mime_type_s": "application/vnd.tcpdunmp.pcap",
+          "hash_md5_h": "bb1bb053843ca7a03152790a79ac64bd",
+          "hash_sha1_h": "bedb1987bc973b8bcf41a1a09143163928578b0b",
+          "hash_sha256_h": "5013a954e6793d3610df43e761fd2deacdd3cd81dbc0ef902c5756bca61b5a94",
+          "hash_sha512_h": "236df7a6e29b9e0a10862a5ddf8b341355c47bacc278d975fd5dac4715aec64860cbc4d26a3510608ed937b36960fff15c62f52d228b05b38ee74e6d202d6f7b"    
+      }
+    }
+  ],
+  "element_observable_c_array": [
+    {
+      "subject_ipv4_s": "101.12.12.12",
+      "score_i": 50,
+      "threat_observable_c_map": {
+          "PCAP_BASIC_FILEINFO_10000": {
+                "occurred_at_t": 4355545,
+                "last_seen_t": 13123
+          },
+          "Threat_Inject_tiger_mama": {
+                "occurred_at_t": 4355545,
+                "dns_request_c_array": [ 
+                  { "req_fqdn_s": "irc.freenode.net" }
+                  ],
+                "dns_response_c_array": [ 
+                  { "record_s": "A", "resp_ipv4_s": "12.1.1.1" },
+                  { "record_s": "CNAME", "resp_fqdn_s": "chat.freenode.net"},
+                  { "record_s": "AAAA", "resp_ipv6_s": "2001:708:40:2001:a822:baff:fec4:2428"},
+                  { "record_s": "TXT", "resp_fqdn_s": "google-site-verification=MrSWLn2NcqsbGduYWEr9F6Y0EuAU0MR_ANpGnA0mWEs"}],
+                "fqdn_c_array": [ 
+                  { "fqdn_s": "eff.com", "ip_ipv4_s": "12.1.1.1" },
+                  { "fqdn_s": "isatap.f.sck.im", "ip_ipv4_s": "89.2.11.2"}
+                ],
+                "host_c_array": [
+                  { "host_fqdn_s": "badguy.com" }
+                ],
+                "http_c_array": [
+                  { "body_s": "", "method_s": "GET", "version_s": "1.1", "agent_s": "Battle.net/1.2.4.5383", "uri_fqdn_s": "http://us.launcher.battle.net/service/wow/alert/en-us", "dest_port_i": 8653},
+                  { "body_s": "", "method_s": "GET", "version_s": "1.1", "agent_s": "Battle.net/1.2.4.5383", "uri_fqdn_s": "http://us.launcher.battle.net/service/wow/alert/en-us", "dest_port_i": 8654}
+                ],
+                "icmp_c_array": [
+                  { "src_ipv4_s": "224.0.0.1", "dest_ipv4_s": "121.1.1.1", "type_i": 9 }
+                ],
+                "tcp_c_array": [
+                  { "src_port_i": 58463, "src_ipv4_s": "172.16.246.6", "dest_port_i": 22, "dest_ipv4_s": "10.0.50.3"},
+                  { "src_port_i": 12312, "src_ipv4_s": "172.16.246.7", "dest_port_i": 21, "dest_ipv4_s": "10.0.51.3"}
+                ],
+                "ssl_c_array" : [
+                  { "session_start_t": 123123123, "session_info_s": "session started on port 1232" }
+                ],
+                "smtp_c_array": [
+                  { "email_s": "fred@badguy.com", "mail_server_ipv4_s": "1.1.1.1"}
+                ],
+                "country_code_s": "IR",
+                "score_i": 70
+             }
+        }
+    }
+  ]
+}
+

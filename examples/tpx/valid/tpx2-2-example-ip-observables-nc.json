@@ -1,0 +1,108 @@
+{
+  "schema_version_s": "2.2.0",
+  "provider_s": "Intel Provider Company",
+  "list_name_s": "Intel Provider Company List Data",
+  "source_observable_s": "PROV_IND_NAME",
+  "source_file_s": "/var/lg/data/json/list_name/2014/06/01/202data.csv",
+  "source_description_s": "This is a description of the feed and the information it provides",
+  "distribution_time_t": 1221312312,
+  "last_updated_t": 121232134,
+  "score_i": 90,
+  "observable_dictionary_c_array": [
+    {
+      "observable_id_s" : "Conficker A",
+      "criticality_i": 70,
+      "score_i": 72,
+      "summary_s": "This is a summary of the observable",
+      "description_s": "If an IP address or domain has been associated with this tag, it means that Intel Provider Company has identified the IP address or domain to be associated with the Conficker botnet variant A.",
+      "notes_s": "User defined notes",
+      "reference_s_array": [
+          "http://www.thisisareference.com/observablereference", "http://www.anotherreference.com/2ndrefererence"
+      ],
+      "classification_c_array" : [
+        {
+          "classification_id_s": "Worm",
+          "classification_family_s": "Malware",
+          "score_i": 70
+        }
+      ]
+    },
+    {
+      "observable_id_s": "Clicker",
+      "criticality_i": 70,
+      "score_i": 72,
+      "summary_s": "This is a summary of the observable",
+      "description_s": "If an IP address or domain has been associated with this tag, it means that Intel Provider Company has identified the IP address or domain to be associated with the Clicker botnet.",
+      "notes_s": "User defined notes",
+      "reference_s_array": [
+          "http://www.thisisareference.com/observablereference", "http://www.anotherreference.com/2ndrefererence"
+      ],
+      "classification_c_array": [
+        {
+          "classification_id_s": "Bot",
+          "classification_family_s": "Malware",
+          "score_i": 70
+        }
+      ]
+    },
+    {
+      "observable_id_s": "Sality",
+      "criticality_i": 70,
+      "score_i": 72,
+      "summary_s": "This is a summary of the observable",
+      "description_s": "If an IP address or domain has been associated with this tag, it means that Intel Provider Company has identified the IP address or domain to be associated with the Sality botnet variant 1.",
+      "notes_s": "User defined notes",
+      "reference_s_array": [
+          "http://www.thisisareference.com/observablereference", "http://www.anotherreference.com/2ndrefererence"
+      ],
+      "classification_c_array": [
+        {
+          "classification_id_s": "Bot",
+          "classification_family_s": "Malware",
+          "score_i": 70
+        }
+      ]
+    }
+  ],
+  "element_observable_c_array": [
+    {
+      "subject_ipv4_s": "123.123.123.132",
+      "score_i": 90,
+      "threat_observable_c_map": {
+          "Conficker A": {
+                "occurred_at_t": 4355545,
+                "last_seen_t": 13123,
+                "country_code_s": "IR",
+                "dest_fqdn_s": "ddd.com",
+                "score_i": 70
+              },
+          "Clicker": {
+                "occurred_at_t": 4355545,
+                "last_seen_t": 13123,
+                "country_code_s": "CH",
+                "dest_fqdn_s": "aaa.com"
+              }
+        }
+    },
+    {
+      "subject_fqdn_s": "www.badguy.com",
+      "threat_observable_c_map": {
+          "Conficker A" : {
+                "occurred_at_t": 4355545,
+                "last_seen_t": 13123
+          }
+      }
+    },
+    {
+      "subject_md5_h": "bb1bb053843ca7a03152790a79ac64bd",
+      "threat_observable_c_map":
+        {
+          "Conficker A" : {
+                "occurred_at_t": 4355545,
+                "last_seen_t": 13123
+          }
+        }
+    }
+  ]
+}
+

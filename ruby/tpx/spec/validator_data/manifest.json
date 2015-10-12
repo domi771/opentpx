@@ -1,0 +1,17 @@
+{ 
+  "schema_version_s": "2.2.0",
+  "provider_s": "provider",
+  "list_name_s": "List Name", 
+  "source_observable_s": "Observable Source", 
+  "source_file_s": "https://example.com/",
+  "source_description_s": "Lorem", 
+  "distribution_time_t": 1443007504,
+  "last_updated_t": 1443007504, 
+  "score_i": 90, 
+  "dictionary_file_manifest": [
+  "dictionary.json"
+  ], 
+  "observable_element_file_manifest": [
+  "data.json"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version_s": "2.2.0",
+  "provider_s": "Lookingglass Cyber Solutions",
+  "list_name_s": "LG BGP",
+  "source_description_s": "This feed contains BGP ownership, routing and topology data.",
+  "workspace_s": "lg-system",
+  "distribution_time_t": 1429894284,
+  "last_updated_t": 343423324324,
+  "source_observable_s": "LG",
+  "asn_c_array": [
+    {
+      "asn_number_ui": 1,
+      "asn_owner_s": "ABC Corp", 
+
+      "asn_routers_ipv4_array" : [
+        1231231, 12312313214, 12131311241, 12312423414
+      ],
+
+      "asn_router_conns_c_array": [
+        { "router_1_ui": 1231232112, "router_2_ui": 121435523 },
+        { "router_1_ui": 2314123434, "router_2_ui": 4523423432}
+      ],
+
+      "asn_cidr_announcements_c_array": [
+        { "start_ipv4_ui": 1234567890, "end_ipv4_ui": 2234567890, "aggregator_ipv4_ui": 12332144, "observed_at_t": 213232232 },
+        { "start_ipv4_ui": 3234567890, "end_ipv4_ui": 4234567890, "aggregator_ipv4_ui": 12332144 }
+      ],
+
+      "asn_downstream_ui_array": [
+        2, 53, 5, 66
+      ],
+
+      "asn_upstream_ui_array": [
+        3, 4
+      ],
+
+      "asn_community_c_array": [
+        { "asn_1_ui": 2323, "asn_2_ui": 2 },
+        { "asn_1_ui": 3, "asn_2_ui": 4}
+      ]
+    },
+
+    {
+      "asn_number_ui": 2,
+      "asn_owner_s": "UTD Corp", 
+      "router_ipv4_ui": 123431,
+      "routers_ipv4_array" : [
+        76767676, 7676765, 333, 65657888
+      ],
+      "router_c_array": [
+        { "router_1_ui": 6565656, "router_2_ui": 234324 },
+        { "router_1_ui": 2346, "router_2_ui": 645645}
+      ],
+      "asncidr_c_array": [
+        { "start_ipv4_ui": 23432423, "end_ipv4_ui": 234222, "aggregator_ipv4_ui": 12332144 },
+        { "start_ipv4_ui": 3234567890, "end_ipv4_ui": 4234567890, "aggregator_ipv4_ui": 12332144 }
+      ],
+      "asn_downstream_ui_array": [
+        5, 55, 7, 61
+      ],
+      "asn_upstream_ui_array": [
+        3, 4
+      ],
+      "asn_community_c_array": [
+        { "asn_1_ui": 1, "asn_2_ui": 2 },
+        { "asn_1_ui": 3, "asn_2_ui": 4}
+      ]
+    }
+    ]
+  }

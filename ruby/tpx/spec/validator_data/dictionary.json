@@ -1,0 +1,40 @@
+{
+  "observable_dictionary_c_array": [
+    {
+      "observable_id_s" : "Conficker A",
+      "score_i": 90,
+      "description_s": "Conficker disables anti-virus and OS updates yada yada yaday.",
+      "classification_c_array" : [
+        {
+          "classification_id_s": "Malware",
+          "classification_family_s": "Bot",
+          "score_i": 90
+        }
+      ]
+    },
+    {
+      "observable_id_s": "Clicker",
+      "score_i": 90,
+      "description_s": "Ad-clicker Trojan.",
+      "classification_c_array": [
+        {
+          "classification_id_s": "Malware",
+          "classification_family_s": "Bot",
+          "score_i": 90
+        }
+      ]
+    },
+    {
+      "observable_id_s": "Sality",
+      "score_i": 72,
+      "description_s": "File infection with a rootkit and p2p algorithm.",
+      "classification_c_array": [
+        {
+          "classification_id_s": "Malware",
+          "classification_family_s": "Bot",
+          "score_i": 90
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version_s": "2.2.0",
+  "provider_s": "A provider's name",
+  "last_updated_t": 343423324324,
+  "source_observable_s": "pr-short",
+  "list_name_s": "Collections-US",
+  "collection_c_array": [ 
+    {
+      "name_id_s": "MarketSeg1",
+      "last_updated_t": 1212312323,
+      "description_s": "This collection is related to MarketSeg1",
+      "author_s": "Fred Jones",
+      "workspace_s": "lg-system",
+      "score_i": 90,
+      "collection_c_array": [ 
+      {
+        "name_id_s": "NCR10205",
+        "description_s": "This is NCR10205 sub-collection",
+        "last_updated_t": 12123132322323,
+        "author_s": "Gerry Freddy",
+        "score_i": 70,
+        "fqdn_ref_c_array": [
+          { "fqdn_s": "seguintexas.gov" },
+          { "fqdn_s": "tenaska.com" }
+        ],
+        "ip_ref_c_array": [
+          { "ip_ipv4_s": "12.1.1.1" }, 
+          { "ip_ipv4_s": "13.1.1.1" }
+        ],
+        "cidr_ref_c_array": [
+          { "cidr_cidrv4_s": "208.191.120.72/29" }, 
+          { "cidr_cidrv4_s": "208.191.120.64/29" }
+        ],
+        "asn_ref_c_array": [ 
+          { "asn_asn_i": 393265 }
+        ],
+        "observable_ref_c_array": [
+          { "observable_id_s": "Conficker A" },
+          { "observable_id_s": "Tracker" }
+        ],
+        "collection_c_array": [
+        {
+          "name_id_s": "10205-SubGroup",
+          "score_i": 50,
+          "fqdn_c_array": [
+            { "fqdn_s": "test.gov" }
+          ]
+        }
+        ]
+      }, 
+      {
+        "name_id_s": "NCR10112",
+        "description_s": "this is a 2nd level collection",
+        "workspace_s": "customer-prem-ws1",
+        "score_i": 50,
+        "fqdn_ref_c_array": [
+          { "fqdn_fqdn_s": "wppienergy.org" }
+        ],
+        "ip_ref_c_array": [
+          { "ip_ipv4_s": "62.189.96.254" }
+         ],
+        "observable_ref_c_array": [
+          { "observable_id_s" : "md232312312123123" }, 
+          { "observable_id_s" : "www.badguy.com"}
+        ]
+      }
+      ]
+    }
+  ]
+  }
