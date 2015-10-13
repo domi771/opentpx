@@ -22,8 +22,8 @@ The OpenTPX specification, data model, data schema and supporting tools are free
 
 ## Tools
 The following tools can be used to validate TPX JSON files.
- * [Ruby Validator](http://www.opentpx.org/downloads/ruby/tpx)
- * [Python Validator](http://www.opentpx.org/downloads/python)
+ * [Ruby Validator](https://github.com/Lookingglass/opentpx/tree/master/ruby/tpx)
+ * [Python Validator](https://github.com/Lookingglass/opentpx/tree/master/python)
 
 ## Contributing
 
