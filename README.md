@@ -15,15 +15,15 @@ The OpenTPX specification, data model, data schema and supporting tools are free
  * [Specification Document](http://www.opentpx.org/docs/opentpx-2-2-0-spec.pdf)
  
 ## Examples
- * [Multiple Examples] (http://www.opentpx.org/opentpx/#downloads)
+ * [Multiple Examples] (http://www.opentpx.org/#downloads)
 
 ## JSON Schema Definition
- * [OpenTPX Schema](http://www.opentpx.org/opentpx/downloads/tpx.2.2.schema.json)
+ * [OpenTPX Schema](http://www.opentpx.org/downloads/tpx.2.2.schema.json)
 
 ## Tools
 The following tools can be used to validate TPX JSON files.
- * [Ruby Validator](http://www.opentpx.org/opentpx/downloads/ruby/tpx)
- * [Python Validator](http://www.opentpx.org/opentpx/downloads/python)
+ * [Ruby Validator](http://www.opentpx.org/downloads/ruby/tpx)
+ * [Python Validator](http://www.opentpx.org/downloads/python)
 
 ## Contributing
 
