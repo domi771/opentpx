@@ -15,7 +15,7 @@ The OpenTPX specification, data model, data schema and supporting tools are free
  * [Specification Document](http://www.opentpx.org/docs/opentpx-2-2-0-spec.pdf)
  
 ## Examples
- * [Multiple Examples] (http://www.opentpx.org/opentpx/downloads)
+ * [Multiple Examples] (http://www.opentpx.org/opentpx/#downloads)
 
 ## JSON Schema Definition
  * [OpenTPX Schema](http://www.opentpx.org/opentpx/downloads/tpx.2.2.schema.json)
